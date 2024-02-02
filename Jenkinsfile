@@ -1,39 +1,31 @@
 pipeline {
-    agent any
+  agent any
 
-    environment {
-        // Define any environment variables needed
-        CI = 'true'
+  environment {
+    PLAYWRIGHT_VERSION = '1.41.1-jammy'
+  }
+
+  tools {
+    nodejs 'NodeJS 20.9'
+    // Specify other tools as needed
+  }
+  
+  stages {
+    stage('install jest') {
+      steps {
+        sh '''
+          npm install --save-dev jest
+        '''
+      }
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checks out the source code
-                checkout scm
-            }
-        }
 
-        stage('Install Dependencies') {
-            steps {
-                // Use Node's package manager to install dependencies
-                script {
-                    sh 'npm install --save-dev jest'
-                }
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                // Executes Jest tests
-                script {
-                    sh 'npm test'
-                }
-            }
-        }
-
-        // You can add more stages for building, deploying, etc.
+    stage('Verify shop end flow') {
+      steps {
+        sh '''
+            npm test
+        '''
+      }
     }
-
-    
+  }
 }
