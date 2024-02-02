@@ -32,6 +32,13 @@ pipeline {
             npm test generateEmail.test.js
         '''
       }
+    stage('Unit test function-generatePassport') {
+      steps {
+        sh '''
+            npm test generatePassport.test.js
+        '''
+      }
     }
   }
+}
 }
