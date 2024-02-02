@@ -10,6 +10,15 @@ pipeline {
     // Specify other tools as needed
   }
   
+  stages {
+    stage('install jest') {
+      steps {
+        sh '''
+          npm install --save-dev jest
+        '''
+      }
+    }
+    
     stage('Unit test function-generateID') {
       steps {
         sh '''
@@ -25,4 +34,4 @@ pipeline {
       }
     }
   }
-
+}
