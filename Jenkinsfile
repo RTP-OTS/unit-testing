@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Use Node's package manager to install dependencies
                 script {
-                    sh 'npm install'
+                    sh 'npm install --save-dev jest'
                 }
             }
         }
