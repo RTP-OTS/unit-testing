@@ -18,12 +18,18 @@ pipeline {
         '''
       }
     }
-
-
-    stage('Verify shop end flow') {
+    
+    stage('Unit test function-generateID') {
       steps {
         sh '''
-            npm test
+            npm test generateID.test.js
+        '''
+      }
+    }
+    stage('Unit test function-generateEmail') {
+      steps {
+        sh '''
+            npm test generateEmail.test.js
         '''
       }
     }
