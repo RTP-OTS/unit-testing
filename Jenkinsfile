@@ -35,16 +35,5 @@ pipeline {
         // You can add more stages for building, deploying, etc.
     }
 
-    post {
-        always {
-            // Actions to perform after the pipeline runs, such as cleanup
-        }
-        success {
-            // Actions to perform if the pipeline succeeds
-        }
-        failure {
-            // Actions to perform if the pipeline fails
-            // For example, you might want to send a notification
-        }
-    }
+    
 }
